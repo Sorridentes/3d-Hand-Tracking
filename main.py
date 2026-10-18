@@ -5,7 +5,7 @@ import socket
 # Parâmetros da câmera
 width, height = 1280, 720
 
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(1)
 cap.set(3, width)  # Set width
 cap.set(4, height)   # Set height
 
@@ -29,7 +29,7 @@ while True:
         lmList = hand  # Lista de 21 landmarks
 
         for lm in lmList:
-            data.extend([lm[0], height - lm[1], lm[2]])  # Agregar x, y, z a la lista de datos
+            data.extend([lm[0], height- 350 - lm[1], lm[2]])  # Agregar x, y, z a la lista de datos
         
         sock.sendto(str(data).encode(), serverAddressPort)
     
