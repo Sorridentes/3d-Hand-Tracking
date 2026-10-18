@@ -27,7 +27,6 @@ while True:
     if hands:
         hand = hands[0]
         lmList = hand  # Lista de 21 landmarks
-        print(lmList)
 
         for lm in lmList:
             data.extend([lm[0], height - lm[1], lm[2]])  # Agregar x, y, z a la lista de datos
@@ -35,7 +34,7 @@ while True:
         sock.sendto(str(data).encode(), serverAddressPort)
     
     
-    
+    img = cv2.resize(img, (0, 0), None, 0.5, 0.5)  # Reduzir a imagem para metade do tamanho
     cv2.imshow("Webcam", img)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
